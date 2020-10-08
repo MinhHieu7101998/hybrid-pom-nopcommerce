@@ -56,4 +56,7 @@ public class CustomerInfoPageObject extends AbstractPage {
 		return isElementSelected(driver, CustomerInfoPageUI.NEWSLETTER_CHECKBOX);
 	}
 
+	
+
+	
 }

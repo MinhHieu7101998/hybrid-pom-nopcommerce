@@ -12,7 +12,7 @@
 		<parameter name="browser" value="firefox_ui" />
 		<classes>
 			<!-- <class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" /> -->
-			<class name="com.nopcommerce.users.Level_03_Register_Login_Page_Factory"/>
+			<class name="com.nopcommerce.users.Level_05_Register_Login_Switch_Page"/>
 		</classes>
 	</test>
 
