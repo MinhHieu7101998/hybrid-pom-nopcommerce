@@ -10,4 +10,5 @@ public class AbstractPageUI {
 	public static final String CHANGE_PASSWORD_LINK = "//a[text()='Change password']";
 	public static final String MY_PRODUCT_REVIEWS = "//a[text()='My product reviews']";
 	
+	public static final String DYNAMIC_LINK = "//a[text()='%s']";
 }

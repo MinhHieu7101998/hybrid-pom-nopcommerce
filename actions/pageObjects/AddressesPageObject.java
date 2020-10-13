@@ -2,7 +2,9 @@ package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 
-public class AddressesPageObject {
+import commons.AbstractPage;
+
+public class AddressesPageObject extends AbstractPage {
 	WebDriver driver;
 	public AddressesPageObject(WebDriver driver) {
 		this.driver = driver;

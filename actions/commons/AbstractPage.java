@@ -76,7 +76,7 @@ public class AbstractPage {
 	}
 
 	protected void waitAlertPresence(WebDriver driver) {
-		explicitWait = new WebDriverWait(driver, 30);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.alertIsPresent());
 	}
 
@@ -131,8 +131,25 @@ public class AbstractPage {
 		element = getElement(driver, locator);
 		element.click();
 	}
+	protected void clickToElement(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		if(driver.toString().toLowerCase().contains("edge")) {
+			sleepInMiliSecond(500);
+		}
+		element = getElement(driver, locator);
+		element.click();
+	}
 
 	protected void senkeyToELement(WebDriver driver, String locator, String value) {
+		element = getElement(driver, locator);
+		element.clear();
+		if(driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
+			sleepInMiliSecond(500);
+		}
+		element.sendKeys(value);
+	}
+	protected void senkeyToELement(WebDriver driver, String locator, String value, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
 		element = getElement(driver, locator);
 		element.clear();
 		if(driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
@@ -163,7 +180,7 @@ public class AbstractPage {
 		getElement(driver, parentLocator).click();
 		sleepInSecond(1);
 
-		explicitWait = new WebDriverWait(driver, 20);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childItemLocator)));
 
 		elements = getElements(driver, childItemLocator);
@@ -205,6 +222,10 @@ public class AbstractPage {
 	protected String getElementText(WebDriver driver, String locator) {
 		return getElement(driver, locator).getText();
 	}
+	protected String getElementText(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		return getElement(driver, locator).getText();
+	}
 
 	protected int countElementSize(WebDriver driver, String locator) {
 		return getElements(driver, locator).size();
@@ -225,6 +246,10 @@ public class AbstractPage {
 	}
 
 	protected boolean isElementDisplayed(WebDriver driver, String locator) {
+		return getElement(driver, locator).isDisplayed();
+	}
+	protected boolean isElementDisplayed(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
 		return getElement(driver, locator).isDisplayed();
 	}
 
@@ -340,17 +365,32 @@ public class AbstractPage {
 	}
 
 	protected void waitToElementVisible(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, 30);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+	}
+	protected void waitToElementVisible(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
 	}
 
 	protected void waitToElementInvisible(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, 30);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+	}
+	protected void waitToElementInvisible(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
 	}
 
 	protected void waitToElementClickable(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, 30);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+	}
+	protected void waitToElementClickable(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
 	}
 	
@@ -388,5 +428,37 @@ public class AbstractPage {
 		waitToElementClickable(driver, AbstractPageUI.REWARD_POINTS_LINK);
 		clickToElement(driver, AbstractPageUI.REWARD_POINTS_LINK);
 		return PageGeneratorManager.getRewardPointsPage(driver);
+	}
+	
+	protected String castRestParamter(String locator, String... dynamicValues) {
+		return locator = String.format(locator, (Object[]) dynamicValues);
+	}
+	
+	public AbstractPage openLinkByPageName(WebDriver driver, String pageName) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
+		
+		switch (pageName) {
+		case "Customer info":
+			return PageGeneratorManager.getCustomerInfoPage(driver);
+		case "Addresses":
+			return PageGeneratorManager.getAddressesPage(driver);
+		case "Orders":
+			return PageGeneratorManager.getOrdersPage(driver);
+		case "Downloadable products":
+			return PageGeneratorManager.getDownloadableProductsPage(driver);
+		case "Back in stock subscriptions":
+			return PageGeneratorManager.getBackInStockSubscriptionsPage(driver);
+		case "Reward points":
+			return PageGeneratorManager.getRewardPointsPage(driver);
+		case "Change password":
+			return PageGeneratorManager.getChangePasswordPage(driver);
+		default:
+			return PageGeneratorManager.getMyProductReviewsPage(driver);
+		}
+	}
+	public void openLinkWithPageName(WebDriver driver, String pageName) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
 	}
 }
