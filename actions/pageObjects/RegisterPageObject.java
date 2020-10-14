@@ -78,4 +78,48 @@ public class RegisterPageObject extends AbstractPage {
 		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getHomePage(driver);
 	}
+	public String getErrorFirstNameText() {
+		waitToElementVisible(driver, RegisterPageUI.FIRSTNAME_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.FIRSTNAME_ERROR_MESSAGE);
+	}
+	
+	public String getErrorLastNameText() {
+		waitToElementVisible(driver, RegisterPageUI.LASTNAME_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.LASTNAME_ERROR_MESSAGE);
+	}
+	
+	public String getErrorEmailText() {
+		waitToElementVisible(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.EMAIL_ERROR_MESSAGE);
+	}
+	
+	public String getErrorPasswordText() {
+		waitToElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.PASSWORD_ERROR_MESSAGE);
+	}
+	
+	public String getErrorConfirmPasswordText() {
+		waitToElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
+	}
+	
+	public String getErrorEmailExists() {
+		waitToElementVisible(driver, RegisterPageUI.EMAIL_EXISTS_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.EMAIL_EXISTS_ERROR_MESSAGE);
+	}
+	
+	public String getErrorPasswordLessSixCharatersAboveMessage() {
+		waitToElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_LESS_SIX_CHARATERS_ABOVE_MESSAGE);
+		return getElementText(driver, RegisterPageUI.PASSWORD_ERROR_LESS_SIX_CHARATERS_ABOVE_MESSAGE);
+	}
+	
+	public String getErrorPasswordLessSixCharatersBelowMessage() {
+		waitToElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_LESS_SIX_CHARATERS_BELOW_MESSAGE);
+		return getElementText(driver, RegisterPageUI.PASSWORD_ERROR_LESS_SIX_CHARATERS_BELOW_MESSAGE);
+	}
+	
+	public String getErrorPasswordAndConfirmPasswordDoNotMatch() {
+		waitToElementVisible(driver, RegisterPageUI.PASSWORD_DIFFERENCE_CONFIRM_PASSWORD_MESSAGE);
+		return getElementText(driver, RegisterPageUI.PASSWORD_DIFFERENCE_CONFIRM_PASSWORD_MESSAGE);
+	}
 }

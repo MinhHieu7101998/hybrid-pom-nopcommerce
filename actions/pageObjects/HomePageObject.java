@@ -15,7 +15,7 @@ public class HomePageObject extends AbstractPage {
 
 	public RegisterPageObject clickToRegisterLink() {
 		waitToElementClickable(driver, HomePageUI.REGISTER_LINK);
-		clickToElement(driver,  HomePageUI.REGISTER_LINK);
+		clickToElement(driver, HomePageUI.REGISTER_LINK);
 		return PageGeneratorManager.getRegisterPage(driver);
 	}
 
@@ -37,10 +37,8 @@ public class HomePageObject extends AbstractPage {
 
 	public CustomerInfoPageObject clickTokMyAccountLink() {
 		waitToElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
-		clickToElement(driver,  HomePageUI.MY_ACCOUNT_LINK);
+		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
 		return PageGeneratorManager.getCustomerInfoPage(driver);
 	}
-
-
 
 }
