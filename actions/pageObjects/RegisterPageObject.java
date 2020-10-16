@@ -19,12 +19,12 @@ public class RegisterPageObject extends AbstractPage {
 
 	public void inputToFirstNameTextbox(String firstName) {
 		waitToElementVisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
-		senkeyToELement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
+		sendkeyToELement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
 	}
 
 	public void inputToLastNameTextbox(String lastName) {
 		waitToElementVisible(driver, RegisterPageUI.LASTNAME_TEXBOX);
-		senkeyToELement(driver, RegisterPageUI.LASTNAME_TEXBOX, lastName);
+		sendkeyToELement(driver, RegisterPageUI.LASTNAME_TEXBOX, lastName);
 	}
 
 	public void selectDayDropdown(String day) {
@@ -45,22 +45,22 @@ public class RegisterPageObject extends AbstractPage {
 
 	public void inputToEmailTextbox(String email) {
 		waitToElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
-		senkeyToELement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
+		sendkeyToELement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
 	}
 
 	public void inputToCompanyNameTextbox(String companyName) {
 		waitToElementVisible(driver, RegisterPageUI.COMPANY_TEXTBOX);
-		senkeyToELement(driver, RegisterPageUI.COMPANY_TEXTBOX, companyName);
+		sendkeyToELement(driver, RegisterPageUI.COMPANY_TEXTBOX, companyName);
 	}
 
 	public void inputToPasswordTextbox(String password) {
 		waitToElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
-		senkeyToELement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
+		sendkeyToELement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
 	}
 
 	public void inputToConfirmPasswordTextbox(String password) {
 		waitToElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
-		senkeyToELement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, password);
+		sendkeyToELement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, password);
 	}
 
 	public void clickToRegisterButton() {

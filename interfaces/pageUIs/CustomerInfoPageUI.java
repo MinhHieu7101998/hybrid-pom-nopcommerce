@@ -11,4 +11,5 @@ public class CustomerInfoPageUI {
 	public static final String COMPANY_TEXTBOX = "//input[@id='Company']";
 	public static final String NEWSLETTER_CHECKBOX = "//input[@id='Newsletter']";
 	public static final String SAVE_BUTTON = "//input[@id='save-info-button']";
+	public static final String GENDER_FEMALE_RADIO_BUTTON = "//input[@id='gender-female']";
 }

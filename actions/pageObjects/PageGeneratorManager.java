@@ -36,5 +36,10 @@ public class PageGeneratorManager {
 	public static MyProductReviewsPageObject getMyProductReviewsPage(WebDriver driver) {
 		return new MyProductReviewsPageObject(driver);
 	}
-	
+	public static ProductPageObject getProductPage(WebDriver driver) {
+		return new ProductPageObject(driver);
+	}
+	public static ProductReviewPageObject getProductReviewPage(WebDriver driver) {
+		return new ProductReviewPageObject(driver);
+	}
 }

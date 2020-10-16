@@ -140,7 +140,7 @@ public class AbstractPage {
 		element.click();
 	}
 
-	protected void senkeyToELement(WebDriver driver, String locator, String value) {
+	protected void sendkeyToELement(WebDriver driver, String locator, String value) {
 		element = getElement(driver, locator);
 		element.clear();
 		if(driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
@@ -148,7 +148,7 @@ public class AbstractPage {
 		}
 		element.sendKeys(value);
 	}
-	protected void senkeyToELement(WebDriver driver, String locator, String value, String... dynamicValues) {
+	protected void sendkeyToELement(WebDriver driver, String locator, String value, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		element = getElement(driver, locator);
 		element.clear();
@@ -294,7 +294,7 @@ public class AbstractPage {
 		action.dragAndDrop(getElement(driver, sourceLocator), getElement(driver, targetLocator)).perform();
 	}
 
-	protected void senKeyBoardToElement(WebDriver driver, String locator, Keys key) {
+	protected void sendKeyBoardToElement(WebDriver driver, String locator, Keys key) {
 		action = new Actions(driver);
 		action.sendKeys(getElement(driver, locator), key).perform();
 	}

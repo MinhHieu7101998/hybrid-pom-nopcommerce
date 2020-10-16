@@ -41,4 +41,10 @@ public class HomePageObject extends AbstractPage {
 		return PageGeneratorManager.getCustomerInfoPage(driver);
 	}
 
+	public ProductPageObject clickToProductComputerPage() {
+		waitToElementClickable(driver, HomePageUI.BUILD_YOUR_OWN_COMPUTER_LINK);
+		clickToElement(driver, HomePageUI.BUILD_YOUR_OWN_COMPUTER_LINK);
+		return PageGeneratorManager.getProductPage(driver);
+	}
+
 }
