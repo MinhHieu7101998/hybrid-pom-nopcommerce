@@ -39,7 +39,7 @@ public class Level_03_My_Account extends AbstractTest {
 		emailConstant = email;
 		newPassword ="123456789";
 		titleReview = "Minh Hieu";
-		textReview = "Se hoc gioi";
+		textReview = "A B C X Y Z";
 	}
 	
 	@Test
