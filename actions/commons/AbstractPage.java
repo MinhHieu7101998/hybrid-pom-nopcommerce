@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -127,6 +128,11 @@ public class AbstractPage {
 	}
 
 	protected List<WebElement> getElements(WebDriver driver, String locator) {
+		return driver.findElements(getByXpath(locator));
+	}
+
+	protected List<WebElement> getElements(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
 		return driver.findElements(getByXpath(locator));
 	}
 
@@ -394,14 +400,18 @@ public class AbstractPage {
 	}
 
 	protected void waitToElementInvisible(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 	}
 
 	protected void waitToElementInvisible(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+		explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
 	}
 
 	protected void waitToElementClickable(WebDriver driver, String locator) {
@@ -413,6 +423,39 @@ public class AbstractPage {
 		locator = castRestParamter(locator, dynamicValues);
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+	}
+
+	public void overrideGlobalTimeout(WebDriver driver, long timeoutInSecond) {
+		driver.manage().timeouts().implicitlyWait(timeoutInSecond, TimeUnit.SECONDS);
+	}
+
+	public boolean isElementUndisplayed(WebDriver driver, String locator) {
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		elements = getElements(driver, locator);
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+
+		if (elements.size() == 0) {
+			return true;
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isElementUndisplayed(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		elements = getElements(driver, locator);
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+
+		if (elements.size() == 0) {
+			return true;
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public String getDirectorySlash(String folderName) {
@@ -530,10 +573,8 @@ public class AbstractPage {
 		waitToElementInvisible(driver, AbstractPageUI.AJAX_LOADING_ICON);
 	}
 
-	public boolean compareImageAshot(WebDriver driver, String locator, String fileName ) throws IOException {
-		
-		
-		
+	public boolean compareImageAshot(WebDriver driver, String locator, String fileName) throws IOException {
+
 		element = getElement(driver, locator);
 
 		BufferedImage expectedImage = ImageIO.read(new File(System.getProperty("user.dir") + getDirectorySlash("uploadFiles") + fileName));
@@ -555,9 +596,9 @@ public class AbstractPage {
 	}
 
 	public void captureImage(WebDriver driver, String locator) throws IOException {
-		
+
 		waitToElementVisible(driver, locator);
-		
+
 		element = getElement(driver, locator);
 
 		Screenshot imageScreenshot = new AShot().takeScreenshot(driver, element);

@@ -54,4 +54,7 @@ public class PageGeneratorManager {
 	public static JqueryUploadFilePageObject getJqueryUploadFilePage(WebDriver driver) {
 		return new JqueryUploadFilePageObject(driver);
 	}
+	public static DemoGuru99HomePageObject getDemoGuru99HomePage(WebDriver driver) {
+		return new DemoGuru99HomePageObject(driver);
+	}
 }

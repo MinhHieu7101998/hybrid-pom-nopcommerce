@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nop commerce" parallel="false">
+
+	<parameter name = "url" value = "http://live.demoguru99.com/"></parameter>
+	
+	<test name="Run on FIREFOX UI">
+		<parameter name="browser" value="firefox_ui" />
+		<classes>
+			<class name="com.demoguru99.user.Level_01_Check_Displayed_Or_Undisplayed" />
+		</classes>
+	</test>
+
+</suite> 
