@@ -12,4 +12,5 @@ public class AbstractPageUI {
 	
 	public static final String DYNAMIC_LINK = "//a[text()='%s']";
 	public static final String UPLOAD_FILE_TYPE = "//input[@type='file']";
+	public static final String AJAX_LOADING_ICON = "//span[@id='ajaxBusy']";
 }

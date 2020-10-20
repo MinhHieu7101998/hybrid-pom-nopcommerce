@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPage;
@@ -26,5 +28,12 @@ public class JqueryUploadFilePageObject extends AbstractPage{
 		waitToElementVisible(driver, JqueryUploadFilePageUI.DYNAMIC_UPLOAD_SUCCESS_LINK, fileName);
 		return isElementDisplayed(driver, JqueryUploadFilePageUI.DYNAMIC_UPLOAD_SUCCESS_LINK, fileName);
 	}
-	
+	public void clickToUploadSuccessLinkImage(String fileName) {
+		waitToElementClickable(driver, JqueryUploadFilePageUI.DYNAMIC_UPLOAD_SUCCESS_IMAGE_LINK,fileName);
+		clickToElement(driver, JqueryUploadFilePageUI.DYNAMIC_UPLOAD_SUCCESS_IMAGE_LINK,fileName);
+	}
+	public boolean isCompareImageUploaded(String fileName) throws IOException {
+		waitToElementVisible(driver, JqueryUploadFilePageUI.IPHONE_OPENED_IMAGE);
+		return compareImageAshot(driver, JqueryUploadFilePageUI.IPHONE_OPENED_IMAGE, fileName);
+	}
 }

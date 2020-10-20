@@ -35,10 +35,9 @@ public class Level_01_Admin extends AbstractTest {
 		
 		ProductsAdminPage.clickToSearchButton();
 		
-		Assert.assertTrue(ProductsAdminPage.isValueDisplayedAtColumnNameByRowNumber("Product name", "1", "$100 Physical Gift Card"));
-		Assert.assertTrue(ProductsAdminPage.isValueDisplayedAtColumnNameByRowNumber("Price", "4", "27.56"));
-		Assert.assertTrue(ProductsAdminPage.isValueDisplayedAtColumnNameByRowNumber("Stock quantity", "2", ""));
-		Assert.assertTrue(ProductsAdminPage.isValueDisplayedAtColumnNameByRowNumber("Product type", "5", "Simple"));
+		Assert.assertTrue(ProductsAdminPage.isValueDisplayedAtColumnNameByRowNumber("Product name", "1", "Lenovo IdeaCentre 600 All-in-One PC"));
+		Assert.assertTrue(ProductsAdminPage.isValueDisplayedAtColumnNameByRowNumber("Product name", "2", "Lenovo Thinkpad X1 Carbon Laptop"));
+		
 		
 	}
 	

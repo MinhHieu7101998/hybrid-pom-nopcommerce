@@ -17,10 +17,11 @@ public class DashboardAdminPageObject extends AbstractPage {
 		clickToElement(driver, DashboardAdminPageUI.CATALOG_BUTTON);
 
 	}
-
+	
 	public ProductsAdminPageObject clickToProductsButton() {
 		waitToElementClickable(driver, DashboardAdminPageUI.PRODUCTS_BUTTON);
 		clickToElement(driver, DashboardAdminPageUI.PRODUCTS_BUTTON);
+		waitToAjaxLoadinIconInvisible(driver);
 		return PageGeneratorManager.getProductsAdminPage(driver);
 	}
 

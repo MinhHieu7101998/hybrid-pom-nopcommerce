@@ -1,7 +1,12 @@
 package commons;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
+
+import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,6 +27,10 @@ import pageObjects.OrdersPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RewardPointsPageObject;
 import pageUIs.AbstractPageUI;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 public class AbstractPage {
 	private JavascriptExecutor jsExecutor;
@@ -517,15 +526,50 @@ public class AbstractPage {
 		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
 	}
 
-	/*
-	 * public boolean compareImageAshot(WebDriver driver, String locator, String fileName) {
-	 * 
-	 * element = getElement(driver, locator); BufferedImage expectedImage = ImageIO.read(new File(System.getProperty("user.dir") + getDirectorySlash("uploadFiles")+
-	 * fileName)); Screenshot logoImageScreenshot = new AShot().takeScreenshot(driver, element); BufferedImage actualImage = logoImageScreenshot.getImage();
-	 * 
-	 * ImageDiffer imgDiff = new ImageDiffer(); ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage); Assert.assertFalse(diff.hasDiff(),"Images are Same");
-	 * Assert.assertF
-	 * 
-	 * }
-	 */
+	public void waitToAjaxLoadinIconInvisible(WebDriver driver) {
+		waitToElementInvisible(driver, AbstractPageUI.AJAX_LOADING_ICON);
+	}
+
+	public boolean compareImageAshot(WebDriver driver, String locator, String fileName ) throws IOException {
+		
+		
+		
+		element = getElement(driver, locator);
+
+		BufferedImage expectedImage = ImageIO.read(new File(System.getProperty("user.dir") + getDirectorySlash("uploadFiles") + fileName));
+		Screenshot logoImageScreenshot = new AShot().takeScreenshot(driver, element);
+
+		BufferedImage actualImage = logoImageScreenshot.getImage();
+
+		ImageDiffer imgDiff = new ImageDiffer();
+		ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
+
+		if (diff.hasDiff()) {
+			System.out.println("Images are Not Same");
+			return false;
+		} else {
+			System.out.println("Images are Same");
+			return true;
+		}
+
+	}
+
+	public void captureImage(WebDriver driver, String locator) throws IOException {
+		
+		waitToElementVisible(driver, locator);
+		
+		element = getElement(driver, locator);
+
+		Screenshot imageScreenshot = new AShot().takeScreenshot(driver, element);
+
+		ImageIO.write(imageScreenshot.getImage(), "png", new File("D:\\Automation Testing Online\\03 - Java Hybrid Framework\\Screenshot\\screenshot.png"));
+
+		File f = new File("D:\\Automation Testing Online\\03 - Java Hybrid Framework\\Screenshot\\screenshot.png");
+
+		if (f.exists()) {
+			System.out.println("Image File Captured");
+		} else {
+			System.out.println("Image NOT exist");
+		}
+	}
 }

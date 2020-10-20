@@ -13,16 +13,16 @@ public class ProductsAdminPageObject extends AbstractPage {
 	}
 
 	public void sendKeyToProductNameTextbox(String productName) {
-		waitToElementClickable(driver, ProductsAdminPageUI.PRODUCT_NAME_TEXTBOX);
+		waitToElementVisible(driver, ProductsAdminPageUI.PRODUCT_NAME_TEXTBOX);
 		sendkeyToELement(driver, ProductsAdminPageUI.PRODUCT_NAME_TEXTBOX, productName);
 	}
 
 	public void clickToSearchButton() {
 		waitToElementClickable(driver, ProductsAdminPageUI.SEARCH_BUTTON);
 		clickToElement(driver, ProductsAdminPageUI.SEARCH_BUTTON);
+		waitToAjaxLoadinIconInvisible(driver);
 
 	}
-
 	public boolean isValueDisplayedAtColumnNameByRowNumber(String columnName, String rowNumber, String value) {
 		waitToElementVisible(driver, ProductsAdminPageUI.DYNAMIC_COLUMN_NAME, columnName);
 		String columnIndex = String.valueOf(countElementSize(driver, ProductsAdminPageUI.DYNAMIC_COLUMN_NAME, columnName) + 1);
