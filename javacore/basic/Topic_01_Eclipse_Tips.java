@@ -2,6 +2,7 @@ package basic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 /**
  * @author Vo Minh Hieu
@@ -39,6 +40,9 @@ public class Topic_01_Eclipse_Tips {
 	 */
 	public void getAddress() {
 		driver.findElement(By.xpath(""));
+	}
+	public void assertF() {
+		Assert.assertFalse(true, "should be same");
 	}
 }
 // Ctrl + D de xoa dong hoac khoi lenh

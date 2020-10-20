@@ -17,10 +17,10 @@ public class Level_04_Search_Advanced_Search extends AbstractTest {
 	WebDriver driver;
 	String firstName, lastName, companyName, email, password;
 
-	@Parameters("browser")
+	@Parameters({"browser", "url"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 
 		firstName = "Ronaldo";
 		lastName = "de Lima";

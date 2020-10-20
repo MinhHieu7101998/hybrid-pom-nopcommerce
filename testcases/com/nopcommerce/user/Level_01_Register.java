@@ -15,10 +15,10 @@ public class Level_01_Register extends AbstractTest {
 	WebDriver driver;
 	String invalidEmail, emailConstant;
 	String firstName, lastName, companyName, email, password, invalidPassword;
-	@Parameters("browser")
+	@Parameters({"browser", "url"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 		
 		invalidEmail ="automation.gmail.com";
 		firstName = "Ronaldo";

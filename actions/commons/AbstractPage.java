@@ -30,6 +30,7 @@ public class AbstractPage {
 	private WebElement element;
 	private List<WebElement> elements;
 	private Select select;
+	private String osName = System.getProperty("os.name");
 
 	protected void openPageUrl(WebDriver driver, String url) {
 		driver.get(url);
@@ -55,7 +56,7 @@ public class AbstractPage {
 		driver.navigate().forward();
 	}
 
-	protected void refreshCurrentPage(WebDriver driver) {
+	public void refreshCurrentPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
 
@@ -125,15 +126,16 @@ public class AbstractPage {
 	}
 
 	protected void clickToElement(WebDriver driver, String locator) {
-		if(driver.toString().toLowerCase().contains("edge")) {
+		if (driver.toString().toLowerCase().contains("edge")) {
 			sleepInMiliSecond(500);
 		}
 		element = getElement(driver, locator);
 		element.click();
 	}
+
 	protected void clickToElement(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
-		if(driver.toString().toLowerCase().contains("edge")) {
+		if (driver.toString().toLowerCase().contains("edge")) {
 			sleepInMiliSecond(500);
 		}
 		element = getElement(driver, locator);
@@ -143,16 +145,17 @@ public class AbstractPage {
 	protected void sendkeyToELement(WebDriver driver, String locator, String value) {
 		element = getElement(driver, locator);
 		element.clear();
-		if(driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
+		if (driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
 			sleepInMiliSecond(500);
 		}
 		element.sendKeys(value);
 	}
+
 	protected void sendkeyToELement(WebDriver driver, String locator, String value, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		element = getElement(driver, locator);
 		element.clear();
-		if(driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
+		if (driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
 			sleepInMiliSecond(500);
 		}
 		element.sendKeys(value);
@@ -198,14 +201,14 @@ public class AbstractPage {
 		}
 	}
 
-	protected void sleepInSecond(long second) {
+	public void sleepInSecond(long second) {
 		try {
 			Thread.sleep(second * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected void sleepInMiliSecond(long milisecond) {
 		try {
 			Thread.sleep(milisecond);
@@ -222,6 +225,7 @@ public class AbstractPage {
 	protected String getElementText(WebDriver driver, String locator) {
 		return getElement(driver, locator).getText();
 	}
+
 	protected String getElementText(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		return getElement(driver, locator).getText();
@@ -229,6 +233,10 @@ public class AbstractPage {
 
 	protected int countElementSize(WebDriver driver, String locator) {
 		return getElements(driver, locator).size();
+	}
+
+	protected int countElementSize(WebDriver driver, String locator, String... dynamicValues) {
+		return getElements(driver, castRestParamter(locator, dynamicValues)).size();
 	}
 
 	protected void checkToCheckbox(WebDriver driver, String locator) {
@@ -248,6 +256,7 @@ public class AbstractPage {
 	protected boolean isElementDisplayed(WebDriver driver, String locator) {
 		return getElement(driver, locator).isDisplayed();
 	}
+
 	protected boolean isElementDisplayed(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		return getElement(driver, locator).isDisplayed();
@@ -368,6 +377,7 @@ public class AbstractPage {
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
 	}
+
 	protected void waitToElementVisible(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
@@ -378,6 +388,7 @@ public class AbstractPage {
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
 	}
+
 	protected void waitToElementInvisible(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
@@ -388,56 +399,99 @@ public class AbstractPage {
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
 	}
+
 	protected void waitToElementClickable(WebDriver driver, String locator, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
 		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
 	}
-	
+
+	public String getDirectorySlash(String folderName) {
+		if (isMac() || isUnix() || isSolaris()) {
+			folderName = "/" + folderName + "/";
+		} else {
+			folderName = "\\" + folderName + "\\";
+		}
+		return folderName;
+	}
+
+	public boolean isWindows() {
+		return (osName.toLowerCase().indexOf("win") >= 0);
+	}
+
+	public boolean isMac() {
+		return (osName.toLowerCase().indexOf("mac") >= 0);
+	}
+
+	public boolean isUnix() {
+		return (osName.toLowerCase().indexOf("nix") >= 0 || osName.toLowerCase().indexOf("nux") >= 0 || osName.toLowerCase().indexOf("aix") > 0);
+	}
+
+	public boolean isSolaris() {
+		return (osName.toLowerCase().indexOf("sunos") >= 0);
+	}
+
+	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+		String filePath = System.getProperty("user.dir") + getDirectorySlash("uploadFiles");
+
+		String fullFileName = "";
+		for (String file : fileNames) {
+			fullFileName = fullFileName + filePath + file + "\n";
+		}
+		fullFileName = fullFileName.trim();
+		sendkeyToELement(driver, AbstractPageUI.UPLOAD_FILE_TYPE, fullFileName);
+	}
+
 	public MyProductReviewsPageObject openMyProductReviews(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.MY_PRODUCT_REVIEWS);
 		clickToElement(driver, AbstractPageUI.MY_PRODUCT_REVIEWS);
 		return PageGeneratorManager.getMyProductReviewsPage(driver);
 	}
+
 	public OrdersPageObject openOrdersPage(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.ORDERS_LINK);
 		clickToElement(driver, AbstractPageUI.ORDERS_LINK);
 		return PageGeneratorManager.getOrdersPage(driver);
 	}
+
 	public BackInStockSubscriptionsPageObject openBackInStockSubscriptionsPage(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.BACK_IN_STOCK_SUBSCRIPTIONS_LINK);
 		clickToElement(driver, AbstractPageUI.BACK_IN_STOCK_SUBSCRIPTIONS_LINK);
 		return PageGeneratorManager.getBackInStockSubscriptionsPage(driver);
 	}
+
 	public ChangePasswordPageObject openChangePasswordPage(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.CHANGE_PASSWORD_LINK);
 		clickToElement(driver, AbstractPageUI.CHANGE_PASSWORD_LINK);
 		return PageGeneratorManager.getChangePasswordPage(driver);
 	}
+
 	public DownloadableProductsPageObject openDownloadableProducts(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.DOWNLOADABLE_PRODUCTS_LINK);
 		clickToElement(driver, AbstractPageUI.DOWNLOADABLE_PRODUCTS_LINK);
 		return PageGeneratorManager.getDownloadableProductsPage(driver);
 	}
+
 	public AddressesPageObject openAddressesPage(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.ADDRESSES_LINK);
 		clickToElement(driver, AbstractPageUI.ADDRESSES_LINK);
 		return PageGeneratorManager.getAddressesPage(driver);
 	}
+
 	public RewardPointsPageObject openRewardPoints(WebDriver driver) {
 		waitToElementClickable(driver, AbstractPageUI.REWARD_POINTS_LINK);
 		clickToElement(driver, AbstractPageUI.REWARD_POINTS_LINK);
 		return PageGeneratorManager.getRewardPointsPage(driver);
 	}
-	
+
 	protected String castRestParamter(String locator, String... dynamicValues) {
 		return locator = String.format(locator, (Object[]) dynamicValues);
 	}
-	
+
 	public AbstractPage openLinkByPageName(WebDriver driver, String pageName) {
 		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
-		
+
 		switch (pageName) {
 		case "Customer info":
 			return PageGeneratorManager.getCustomerInfoPage(driver);
@@ -457,8 +511,21 @@ public class AbstractPage {
 			return PageGeneratorManager.getMyProductReviewsPage(driver);
 		}
 	}
+
 	public void openLinkWithPageName(WebDriver driver, String pageName) {
 		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_LINK, pageName);
 	}
+
+	/*
+	 * public boolean compareImageAshot(WebDriver driver, String locator, String fileName) {
+	 * 
+	 * element = getElement(driver, locator); BufferedImage expectedImage = ImageIO.read(new File(System.getProperty("user.dir") + getDirectorySlash("uploadFiles")+
+	 * fileName)); Screenshot logoImageScreenshot = new AShot().takeScreenshot(driver, element); BufferedImage actualImage = logoImageScreenshot.getImage();
+	 * 
+	 * ImageDiffer imgDiff = new ImageDiffer(); ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage); Assert.assertFalse(diff.hasDiff(),"Images are Same");
+	 * Assert.assertF
+	 * 
+	 * }
+	 */
 }

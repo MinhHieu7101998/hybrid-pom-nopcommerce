@@ -45,4 +45,13 @@ public class PageGeneratorManager {
 	public static SearchPageObject getSearchPage(WebDriver driver) {
 		return new SearchPageObject(driver);
 	}
+	public static DashboardAdminPageObject getDashboardAdminPage(WebDriver driver) {
+		return new DashboardAdminPageObject(driver);
+	}
+	public static ProductsAdminPageObject getProductsAdminPage(WebDriver driver) {
+		return new ProductsAdminPageObject(driver);
+	}
+	public static JqueryUploadFilePageObject getJqueryUploadFilePage(WebDriver driver) {
+		return new JqueryUploadFilePageObject(driver);
+	}
 }

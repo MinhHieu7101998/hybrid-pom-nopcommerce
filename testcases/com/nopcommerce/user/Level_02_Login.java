@@ -17,10 +17,10 @@ public class Level_02_Login extends AbstractTest {
 	String invalidEmail;
 	String firstName, lastName, companyName, email, password;
 
-	@Parameters("browser")
+	@Parameters({"browser", "url"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 
 		invalidEmail = "automation.gmail.com";
 		firstName = "Ronaldo";

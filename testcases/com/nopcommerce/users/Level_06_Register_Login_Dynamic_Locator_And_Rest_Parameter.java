@@ -25,11 +25,10 @@ public class Level_06_Register_Login_Dynamic_Locator_And_Rest_Parameter extends 
 	
 	WebDriver driver;
 	String firstName, lastName, companyName, email, password;
-	@Parameters("browser")
+	@Parameters({"browser", "url"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 		
 		firstName = "Ronaldo";
 		lastName = "de Lima";

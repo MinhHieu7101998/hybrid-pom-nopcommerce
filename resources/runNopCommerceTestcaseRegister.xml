@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop commerce" parallel="false">
+
+	<parameter name="url" value="https://admin-demo.nopcommerce.com/" />
+
   <test name="Run on firefox_ui">
   	<parameter name="browser" value="firefox_ui" />
     <classes>
-      <class name="com.nopcommerce.user.Level_04_Search_Advanced_Search"/>
+      <class name="com.nopcommerce.user.Level_07_Handle_Data_Table_Grid"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

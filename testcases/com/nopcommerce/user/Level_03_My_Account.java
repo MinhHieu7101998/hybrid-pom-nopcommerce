@@ -24,10 +24,10 @@ public class Level_03_My_Account extends AbstractTest {
 	String invalidEmail, emailConstant, newPassword;
 	String firstName, lastName, companyName, email, password, invalidPassword;
 	String titleReview, textReview;
-	@Parameters("browser")
+	@Parameters({"browser", "url"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 		
 		invalidEmail ="automation.gmail.com";
 		firstName = "Ronaldo";

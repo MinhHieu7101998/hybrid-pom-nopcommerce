@@ -18,7 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class AbstractTest {
 	private WebDriver driver;
 	
-	protected WebDriver getBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriver(String browserName, String url) {
 		
 		Browser browser = Browser.valueOf(browserName.toUpperCase());
 		
@@ -55,7 +55,7 @@ public class AbstractTest {
 		}
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://demo.nopcommerce.com/");
+		driver.get(url);
 		return driver;
 	}
 	protected int getRandomNumber() {

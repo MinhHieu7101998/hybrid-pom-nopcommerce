@@ -11,4 +11,5 @@ public class AbstractPageUI {
 	public static final String MY_PRODUCT_REVIEWS = "//a[text()='My product reviews']";
 	
 	public static final String DYNAMIC_LINK = "//a[text()='%s']";
+	public static final String UPLOAD_FILE_TYPE = "//input[@type='file']";
 }
