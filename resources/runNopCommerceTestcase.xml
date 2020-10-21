@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop commerce" parallel="false">
 
+
+	<parameter name="url" value="https://demo.nopcommerce.com/" />
+	<listeners>
+		<listener class-name='commons.MethodListener'/>
+	</listeners>
+	
+	<test name="Run on FIREFOX UI">
+		<parameter name="browser" value="firefox_ui" />
+		<classes>
+			<class name="com.nopcommerce.users.Level_07_Custom_Assert_And_Verify"/>
+		</classes>
+	</test>
+	
+	
 	<!-- <test name="Run on  SAFARI UI">
 		<parameter name="browser" value="safari" />
 		<classes>
 			<class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" />
 		</classes>
 	</test> -->
-
-	<test name="Run on FIREFOX UI">
-		<parameter name="browser" value="firefox_ui" />
-		<classes>
-			<!-- <class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" /> -->
-			<class name="com.nopcommerce.users.Level_07_Handle_Data_Table_Grid"/>
-		</classes>
-	</test>
-
+	
 	<!-- <test name="Run on CHROME UI">
 		<parameter name="browser" value="chrome_ui" />
 		<classes>

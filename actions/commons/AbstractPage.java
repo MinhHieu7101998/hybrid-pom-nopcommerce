@@ -586,10 +586,8 @@ public class AbstractPage {
 		ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
 
 		if (diff.hasDiff()) {
-			System.out.println("Images are Not Same");
 			return false;
 		} else {
-			System.out.println("Images are Same");
 			return true;
 		}
 
