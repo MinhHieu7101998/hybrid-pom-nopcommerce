@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Nop commerce" parallel="false">
+<suite name="Nop commerce" parallel="false" thread-count="2">
 
 
 	<parameter name="url" value="https://demo.nopcommerce.com/" />
 	<listeners>
-		<listener class-name='commons.MethodListener'/>
+		<listener class-name="commons.MethodListener"/>
+		<listener class-name="reportConfig.AllureTestListener"/>
+		<listener class-name="reportConfig.ExtentTestListener"/>
+		<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
 	</listeners>
 	
-	<test name="Run on FIREFOX UI">
+	<!-- <test name="Run on FIREFOX UI">
 		<parameter name="browser" value="firefox_ui" />
 		<classes>
-			<class name="com.nopcommerce.users.Level_07_Custom_Assert_And_Verify"/>
+			<class name="com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report"/>
+		</classes>
+	</test> -->
+	
+	<test name="Run on CHROME UI">
+		<parameter name="browser" value="chrome_ui" />
+		<classes>
+			<class name="com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report"/>
 		</classes>
 	</test>
 	
+	<!-- <test name="Run on EDGE UI">
+		<parameter name="browser" value="edge_chromium" />
+		<classes>
+			<class name="com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report"/>
+		</classes>
+	</test> --> -->
 	
 	<!-- <test name="Run on  SAFARI UI">
 		<parameter name="browser" value="safari" />
@@ -22,32 +39,21 @@
 		</classes>
 	</test> -->
 	
-	<!-- <test name="Run on CHROME UI">
-		<parameter name="browser" value="chrome_ui" />
-		<classes>
-			<class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" />
-			<class name="com.nopcommerce.users.Level_03_Register_Login_Page_Factory"/>
-		</classes>
-	</test> -->
+	
 
 	<!-- <test name="Run on FIREFOX HEADLESS ">
 		<parameter name="browser" value="firefox_headless" />
 		<classes>
 			<class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" />
 		</classes>
-	</test>
+	</test>-->
 
-	<test name="Run on CHROME HEADLESS">
+	<!-- <test name="Run on CHROME HEADLESS">
 		<parameter name="browser" value="chrome_headless" />
 		<classes>
 			<class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" />
 		</classes>
-	</test>
-
-	<test name="Run on EDGE UI">
-		<parameter name="browser" value="edge_chromium" />
-		<classes>
-			<class name="com.nopcommerce.users.Level_02_Register_Login_Multiple_Browser" />
-		</classes>
 	</test> -->
+
+	
 </suite> 

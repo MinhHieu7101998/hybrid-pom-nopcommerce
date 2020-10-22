@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,7 +20,18 @@ import org.testng.Reporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AbstractTest {
-	private WebDriver driver;
+	
+	protected static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>();
+	
+	public static ThreadLocal<String> browserName = new ThreadLocal<String>();
+	
+	protected final Log log;
+	
+	protected AbstractTest() {
+		log = LogFactory.getLog(getClass());
+	}
+	
+	protected static WebDriver driver;
 
 	protected WebDriver getBrowserDriver(String browserName, String url) {
 
@@ -45,7 +58,7 @@ public class AbstractTest {
 			options.addArguments("window-size=1366x768");
 			driver = new ChromeDriver(options);
 		} else if (browser == Browser.EDGE_CHROMIUM) {
-			WebDriverManager.edgedriver().driverVersion("85.0.564.68").setup();
+			WebDriverManager.edgedriver().driverVersion("86.0.622.48").setup();
 			driver = new EdgeDriver();
 		} else if (browser == Browser.IE) {
 			WebDriverManager.iedriver().arch32().setup();
@@ -60,7 +73,16 @@ public class AbstractTest {
 		driver.get(url);
 		return driver;
 	}
-
+	
+	protected void removeDriver() {
+		getDriver().quit();
+		threadLocalDriver.remove();
+	}
+	
+	public static WebDriver getDriver() {
+		return threadLocalDriver.get();
+	}
+	
 	protected int getRandomNumber() {
 		Random rand = new Random();
 		return rand.nextInt(99999);
@@ -69,6 +91,11 @@ public class AbstractTest {
 	private boolean checkTrue(boolean condition) {
 		boolean pass = true;
 		try {
+			if (condition == true) {
+				log.info(" -------------------------- PASSED -------------------------- ");
+			} else {
+				log.info(" -------------------------- FAILED -------------------------- ");
+			}
 			Assert.assertTrue(condition);
 		} catch (Throwable e) {
 			pass = false;
@@ -86,6 +113,11 @@ public class AbstractTest {
 	private boolean checkFailed(boolean condition) {
 		boolean pass = true;
 		try {
+			if (condition == false) {
+				log.info(" -------------------------- PASSED -------------------------- ");
+			} else {
+				log.info(" -------------------------- FAILED -------------------------- ");
+			}
 			Assert.assertFalse(condition);
 		} catch (Throwable e) {
 			pass = false;
@@ -103,8 +135,10 @@ public class AbstractTest {
 		boolean pass = true;
 		try {
 			Assert.assertEquals(actual, expected);
+			log.info(" -------------------------- PASSED -------------------------- ");
 		} catch (Throwable e) {
 			pass = false;
+			log.info(" -------------------------- FAILED -------------------------- ");
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 		}

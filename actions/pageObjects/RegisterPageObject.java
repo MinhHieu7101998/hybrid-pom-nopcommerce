@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPage;
+import io.qameta.allure.Step;
 import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends AbstractPage {
@@ -17,11 +18,12 @@ public class RegisterPageObject extends AbstractPage {
 		clickToElement(driver, RegisterPageUI.GENDER_MALE_RADIO);
 	}
 
+	@Step("Input to first name textbox with value: {0}")
 	public void inputToFirstNameTextbox(String firstName) {
 		waitToElementVisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
 		sendkeyToELement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
 	}
-
+	@Step("Input to last name textbox with value: {0}")
 	public void inputToLastNameTextbox(String lastName) {
 		waitToElementVisible(driver, RegisterPageUI.LASTNAME_TEXBOX);
 		sendkeyToELement(driver, RegisterPageUI.LASTNAME_TEXBOX, lastName);

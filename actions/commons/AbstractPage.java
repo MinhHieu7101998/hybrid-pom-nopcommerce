@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -42,6 +44,12 @@ public class AbstractPage {
 	private Select select;
 	private String osName = System.getProperty("os.name");
 
+	protected final Log log;
+
+	protected AbstractPage() {
+		log = LogFactory.getLog(getClass());
+	}
+
 	protected void openPageUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
@@ -71,24 +79,33 @@ public class AbstractPage {
 	}
 
 	protected void acceptAlert(WebDriver driver) {
+		waitAlertPresence(driver);
 		driver.switchTo().alert().accept();
 	}
 
 	protected void cancleAlert(WebDriver driver) {
+		waitAlertPresence(driver);
 		driver.switchTo().alert().dismiss();
 	}
 
 	protected String getTextAlert(WebDriver driver) {
+		waitAlertPresence(driver);
 		return driver.switchTo().alert().getText();
 	}
 
 	protected void setTextAlert(WebDriver driver, String value) {
+		waitAlertPresence(driver);
 		driver.switchTo().alert().sendKeys(value);
 	}
 
 	protected void waitAlertPresence(WebDriver driver) {
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		explicitWait.until(ExpectedConditions.alertIsPresent());
+		try {
+			explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+			explicitWait.until(ExpectedConditions.alertIsPresent());
+		} catch (Exception e) {
+			log.debug(e.getMessage());
+		}
+
 	}
 
 	protected void switchToWindowByID(WebDriver driver, String parentID) {
@@ -144,8 +161,13 @@ public class AbstractPage {
 		if (driver.toString().toLowerCase().contains("edge")) {
 			sleepInMiliSecond(500);
 		}
-		element = getElement(driver, locator);
-		element.click();
+		try {
+			element = getElement(driver, locator);
+			element.click();
+		} catch (Exception e) {
+			log.debug("Element is not clickable: " + e.getMessage());
+		}
+
 	}
 
 	protected void clickToElement(WebDriver driver, String locator, String... dynamicValues) {
@@ -153,33 +175,49 @@ public class AbstractPage {
 		if (driver.toString().toLowerCase().contains("edge")) {
 			sleepInMiliSecond(500);
 		}
-		element = getElement(driver, locator);
-		element.click();
+		try {
+			element = getElement(driver, locator);
+			element.click();
+		} catch (Exception e) {
+			log.debug("Element is not clickable: " + e.getMessage());
+		}
 	}
 
 	protected void sendkeyToELement(WebDriver driver, String locator, String value) {
-		element = getElement(driver, locator);
-		element.clear();
 		if (driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
 			sleepInMiliSecond(500);
 		}
-		element.sendKeys(value);
+		try {
+			element = getElement(driver, locator);
+			element.clear();
+			element.sendKeys(value);
+		} catch (Exception e) {
+			log.debug("Element is not sendkey: " + e.getMessage());
+		}
 	}
 
 	protected void sendkeyToELement(WebDriver driver, String locator, String value, String... dynamicValues) {
 		locator = castRestParamter(locator, dynamicValues);
-		element = getElement(driver, locator);
-		element.clear();
 		if (driver.toString().toLowerCase().contains("edge") || driver.toString().toLowerCase().contains("chrome")) {
 			sleepInMiliSecond(500);
 		}
-		element.sendKeys(value);
+		try {
+			element = getElement(driver, locator);
+			element.clear();
+			element.sendKeys(value);
+		} catch (Exception e) {
+			log.debug("Element is not sendkey: " + e.getMessage());
+		}
 	}
 
 	protected void selectItemInDropdown(WebDriver driver, String locator, String itemValue) {
-		element = getElement(driver, locator);
-		select = new Select(element);
-		select.selectByVisibleText(itemValue);
+		try {
+			element = getElement(driver, locator);
+			select = new Select(element);
+			select.selectByVisibleText(itemValue);
+		} catch (Exception e) {
+			log.debug("Item dropdown is not select: " + e.getMessage());
+		}
 	}
 
 	protected String getFirstSelectedTextDropdown(WebDriver driver, String locator) {
@@ -189,9 +227,14 @@ public class AbstractPage {
 	}
 
 	protected boolean isDropdownMultiple(WebDriver driver, String locator) {
-		element = getElement(driver, locator);
-		Select select = new Select(element);
-		return select.isMultiple();
+		try {
+			element = getElement(driver, locator);
+			Select select = new Select(element);
+			return select.isMultiple();
+		} catch (Exception e) {
+			log.debug("Dropdown not multiple: " + e.getMessage());
+			return false;
+		}
 	}
 
 	protected void selectItemInCustomDropdown(WebDriver driver, String parentLocator, String childItemLocator, String expectedItem) {
@@ -269,28 +312,59 @@ public class AbstractPage {
 	}
 
 	protected boolean isElementDisplayed(WebDriver driver, String locator) {
-		return getElement(driver, locator).isDisplayed();
+		try {
+			return getElement(driver, locator).isDisplayed();
+		} catch (Exception e) {
+			log.debug("Element is not displayed with error: " + e.getMessage());
+			return false;
+		}
+		
 	}
-
+	
 	protected boolean isElementDisplayed(WebDriver driver, String locator, String... dynamicValues) {
-		locator = castRestParamter(locator, dynamicValues);
-		return getElement(driver, locator).isDisplayed();
+		try {
+			locator = castRestParamter(locator, dynamicValues);
+			return getElement(driver, locator).isDisplayed();
+		} catch (Exception e) {
+			log.debug("Element is not displayed with error: " + e.getMessage());
+			return false;
+		}
 	}
 
 	protected boolean isElementSelected(WebDriver driver, String locator) {
-		return getElement(driver, locator).isSelected();
+		try {
+			return getElement(driver, locator).isSelected();
+		} catch (Exception e) {
+			log.debug("Element is not selected with error: " + e.getMessage());
+			return false;
+		}
 	}
 
 	protected boolean isElementEnabled(WebDriver driver, String locator) {
-		return getElement(driver, locator).isEnabled();
+		try {
+			return getElement(driver, locator).isEnabled();
+		} catch (Exception e) {
+			log.debug("Element is not enabled with error: " + e.getMessage());
+			return false;
+		}
+		
 	}
 
 	protected void switchToFrame(WebDriver driver, String locator) {
-		driver.switchTo().frame(getElement(driver, locator));
+		try {
+			driver.switchTo().frame(getElement(driver, locator));
+		} catch (Exception e) {
+			log.debug("No frame/iframe with: " + e.getMessage());
+		}
 	}
 
 	protected void switchToDefaultContent(WebDriver driver) {
-		driver.switchTo().defaultContent();
+		try {
+			driver.switchTo().defaultContent();
+		} catch (Exception e) {
+			log.debug("Can't switch to default content with error: " + e.getMessage());
+		}
+		
 	}
 
 	protected void doubleClickToElement(WebDriver driver, String locator) {
@@ -389,40 +463,64 @@ public class AbstractPage {
 	}
 
 	protected void waitToElementVisible(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+		try {
+			explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+			explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+		} catch (Exception e) {
+			log.debug("Wait for element visible with error: " + e.getMessage());
+		}
 	}
 
 	protected void waitToElementVisible(WebDriver driver, String locator, String... dynamicValues) {
-		locator = castRestParamter(locator, dynamicValues);
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+		try {
+			locator = castRestParamter(locator, dynamicValues);
+			explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+			explicitWait.until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+		} catch (Exception e) {
+			log.debug("Wait for element visible with error: " + e.getMessage());
+		}
 	}
 
 	protected void waitToElementInvisible(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
-		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
-		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
-		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		try {
+			explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+			overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+			explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		} catch (Exception e) {
+			log.debug("Wait for element invisible with error: " + e.getMessage());
+		}
 	}
 
 	protected void waitToElementInvisible(WebDriver driver, String locator, String... dynamicValues) {
-		locator = castRestParamter(locator, dynamicValues);
-		explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
-		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
-		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
-		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		try {
+			locator = castRestParamter(locator, dynamicValues);
+			explicitWait = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+			overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+			explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+		} catch (Exception e) {
+			log.debug("Wait for element invisible with error: " + e.getMessage());
+		}
 	}
 
 	protected void waitToElementClickable(WebDriver driver, String locator) {
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+		try {
+			explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+			explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+		} catch (Exception e) {
+			log.debug("Wait for click to element with error: " + e.getMessage());
+		}
 	}
 
 	protected void waitToElementClickable(WebDriver driver, String locator, String... dynamicValues) {
-		locator = castRestParamter(locator, dynamicValues);
-		explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
-		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+		try {
+			locator = castRestParamter(locator, dynamicValues);
+			explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+			explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+		} catch (Exception e) {
+			log.debug("Wait for click to element with error: " + e.getMessage());
+		}
 	}
 
 	public void overrideGlobalTimeout(WebDriver driver, long timeoutInSecond) {

@@ -1,0 +1,22 @@
+2020-10-22 13:23:41,329 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 01: Click to 'Register' link 
+2020-10-22 13:23:43,181 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 02: Click to 'Gender male' radio button
+2020-10-22 13:23:43,456 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 03: Input to all required fields
+2020-10-22 13:23:44,861 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 04: Click to 'Register' button submit
+2020-10-22 13:23:46,610 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 05: Verify rigister success message displayed
+2020-10-22 13:23:46,673 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register = Step 06: Click to 'Logout' link
+2020-10-22 13:23:48,466 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 01: Click to 'Login' link
+2020-10-22 13:23:49,216 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 02: Input to 'Email' textbox
+2020-10-22 13:23:49,328 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 03: Input to 'Password' textbox
+2020-10-22 13:23:49,399 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 04: Click to 'Login' button
+2020-10-22 13:23:51,295 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'My Account' link displayed
+2020-10-22 13:23:51,370 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'Logout' link displayed
+2020-10-22 13:23:51,422 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 01: Click to 'My Account' link
+2020-10-22 13:23:52,861 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Gender Male' is selected
+2020-10-22 13:23:52,923 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'First name' textox
+2020-10-22 13:23:52,970 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Last name' textbox
+2020-10-22 13:23:53,017 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Day' dropdown
+2020-10-22 13:23:53,060 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Month' dropdown
+2020-10-22 13:23:53,115 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Year' dropdown
+2020-10-22 13:23:53,161 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Email' textbox
+2020-10-22 13:23:53,200 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Company name' textbox
+2020-10-22 13:23:53,249 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Newsletter' radio button selected
