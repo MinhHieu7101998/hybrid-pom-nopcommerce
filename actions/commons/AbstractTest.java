@@ -20,17 +20,17 @@ import org.testng.Reporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AbstractTest {
-	
+
 	protected static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>();
-	
+
 	public static ThreadLocal<String> browserName = new ThreadLocal<String>();
-	
+
 	protected final Log log;
-	
+
 	protected AbstractTest() {
 		log = LogFactory.getLog(getClass());
 	}
-	
+
 	protected static WebDriver driver;
 
 	protected WebDriver getBrowserDriver(String browserName, String url) {
@@ -73,16 +73,51 @@ public class AbstractTest {
 		driver.get(url);
 		return driver;
 	}
-	
+
 	protected void removeDriver() {
-		getDriver().quit();
+		try {
+			String osName = System.getProperty("os.name").toLowerCase();
+
+			String cmd = "";
+			if (driver != null) {
+				driver.quit();
+			}
+			if (driver.toString().toLowerCase().contains("chrome")) {
+				if (osName.toLowerCase().contains("mac")) {
+					cmd = "pkill chromedriver";
+				} else if (osName.toLowerCase().contains("windows")) {
+					cmd = "taskkill /F /FI \"IMAGENAME eq chromedriver*\"";
+				}
+			} else if (driver.toString().toLowerCase().contains("internetexplorer")) {
+				if (osName.toLowerCase().contains("window")) {
+					cmd = "taskkill /F /FI \"IMAGENAME eq IEDriverServer*\"";
+				}
+			} else if (driver.toString().toLowerCase().contains("firefox")) {
+				if (osName.toLowerCase().contains("mac")) {
+					cmd = "pkill geckodriver";
+				} else if (osName.toLowerCase().contains("windows")) {
+					cmd = "taskkill /F /FI \"IMAGENAME eq geckodriver*\"";
+				}
+			}else if (driver.toString().toLowerCase().contains("edge")) {
+				if (osName.toLowerCase().contains("mac")) {
+					cmd = "pkill msedgedriver";
+				} else if (osName.toLowerCase().contains("windows")) {
+					cmd = "taskkill /F /FI \"IMAGENAME eq msedgedriver*\"";
+				}
+			}
+			Process process = Runtime.getRuntime().exec(cmd);
+			process.waitFor();
+
+		} catch (Exception e) {
+			log.info(e.getMessage());
+		}
 		threadLocalDriver.remove();
 	}
-	
+
 	public static WebDriver getDriver() {
 		return threadLocalDriver.get();
 	}
-	
+
 	protected int getRandomNumber() {
 		Random rand = new Random();
 		return rand.nextInt(99999);

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Nop commerce" parallel="false" thread-count="2">
+<suite name="Nop commerce" parallel="false">
 
 
 	<parameter name="url" value="https://demo.nopcommerce.com/" />
 	<listeners>
-		<listener class-name="commons.MethodListener"/>
-		<listener class-name="reportConfig.AllureTestListener"/>
-		<listener class-name="reportConfig.ExtentTestListener"/>
+		<!-- <listener class-name="commons.MethodListener"/>
+		<listener class-name="reportConfig.AllureTestListener"/> -->
+		<!-- <listener class-name="reportConfig.ExtentTestListener"/>
 		<listener class-name="org.uncommons.reportng.HTMLReporter"/>
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/> -->
 	</listeners>
 	
 	<!-- <test name="Run on FIREFOX UI">
@@ -21,7 +21,8 @@
 	<test name="Run on CHROME UI">
 		<parameter name="browser" value="chrome_ui" />
 		<classes>
-			<class name="com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report"/>
+			<class name = "com.nopcommerce.commons.Common_01_Register_Account"/>
+			<class name="com.nopcommerce.users.Level_09_Share_State"/>
 		</classes>
 	</test>
 	
@@ -30,7 +31,7 @@
 		<classes>
 			<class name="com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report"/>
 		</classes>
-	</test> --> -->
+	</test> -->
 	
 	<!-- <test name="Run on  SAFARI UI">
 		<parameter name="browser" value="safari" />

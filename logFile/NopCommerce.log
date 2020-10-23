@@ -408,3 +408,102 @@
 2020-10-22 20:22:54,625 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
 2020-10-22 20:22:54,626 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'Logout' link displayed
 2020-10-22 20:22:54,680 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
+2020-10-23 16:53:43,793 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 01: Click to 'Register' link 
+2020-10-23 16:53:44,682 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 02: Click to 'Gender male' radio button
+2020-10-23 16:53:44,818 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 03: Input to all required fields
+2020-10-23 16:53:49,551 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 04: Click to 'Register' button submit
+2020-10-23 16:53:52,121 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 05: Verify rigister success message displayed
+2020-10-23 16:53:52,209 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:52,209 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register = Step 06: Click to 'Logout' link
+2020-10-23 16:53:53,526 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 01: Click to 'Login' link
+2020-10-23 16:53:54,142 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 02: Input to 'Email' textbox
+2020-10-23 16:53:54,827 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 03: Input to 'Password' textbox
+2020-10-23 16:53:55,459 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 04: Click to 'Login' button
+2020-10-23 16:53:56,499 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'My Account' link displayed
+2020-10-23 16:53:56,570 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:56,571 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'Logout' link displayed
+2020-10-23 16:53:56,623 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:56,637 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 01: Click to 'My Account' link
+2020-10-23 16:53:58,192 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Gender Male' is selected
+2020-10-23 16:53:58,252 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,252 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 03: Verify 'First name' textox
+2020-10-23 16:53:58,299 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,300 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 04: Verify 'Last name' textbox
+2020-10-23 16:53:58,351 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,351 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 04: Verify 'Day' dropdown
+2020-10-23 16:53:58,400 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,401 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 06: Verify 'Month' dropdown
+2020-10-23 16:53:58,449 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,449 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 07: Verify 'Year' dropdown
+2020-10-23 16:53:58,502 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,502 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 08: Verify 'Email' textbox
+2020-10-23 16:53:58,558 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 16:53:58,559 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 09: Verify 'Company name' textbox
+2020-10-23 16:54:28,581 DEBUG pageObjects.CustomerInfoPageObject - Wait for element visible with error: Expected condition failed: waiting for visibility of element located by By.xpath: //input[@id='Company failed'] (tried for 30 second(s) with 500 milliseconds interval)
+2020-10-23 17:20:19,685 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 01: Click to 'Register' link 
+2020-10-23 17:20:20,517 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 02: Click to 'Gender male' radio button
+2020-10-23 17:20:20,650 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 03: Input to all required fields
+2020-10-23 17:20:25,035 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 04: Click to 'Register' button submit
+2020-10-23 17:20:26,726 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 05: Verify rigister success message displayed
+2020-10-23 17:20:26,798 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:26,798 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register = Step 06: Click to 'Logout' link
+2020-10-23 17:20:28,788 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 01: Click to 'Login' link
+2020-10-23 17:20:29,342 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 02: Input to 'Email' textbox
+2020-10-23 17:20:29,987 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 03: Input to 'Password' textbox
+2020-10-23 17:20:30,621 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 04: Click to 'Login' button
+2020-10-23 17:20:31,633 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'My Account' link displayed
+2020-10-23 17:20:31,700 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:31,700 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'Logout' link displayed
+2020-10-23 17:20:31,757 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:31,774 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 01: Click to 'My Account' link
+2020-10-23 17:20:32,375 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Gender Male' is selected
+2020-10-23 17:20:32,424 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,424 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 03: Verify 'First name' textox
+2020-10-23 17:20:32,474 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,474 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 04: Verify 'Last name' textbox
+2020-10-23 17:20:32,529 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,529 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 04: Verify 'Day' dropdown
+2020-10-23 17:20:32,583 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,584 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 06: Verify 'Month' dropdown
+2020-10-23 17:20:32,635 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,635 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 07: Verify 'Year' dropdown
+2020-10-23 17:20:32,689 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,689 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 08: Verify 'Email' textbox
+2020-10-23 17:20:32,738 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:20:32,738 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 09: Verify 'Company name' textbox
+2020-10-23 17:21:02,790 DEBUG pageObjects.CustomerInfoPageObject - Wait for element visible with error: Expected condition failed: waiting for visibility of element located by By.xpath: //input[@id='Company failed'] (tried for 30 second(s) with 500 milliseconds interval)
+2020-10-23 17:25:48,451 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 01: Click to 'Register' link 
+2020-10-23 17:25:50,112 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 02: Click to 'Gender male' radio button
+2020-10-23 17:25:50,222 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 03: Input to all required fields
+2020-10-23 17:25:54,600 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 04: Click to 'Register' button submit
+2020-10-23 17:25:56,350 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register - Step 05: Verify rigister success message displayed
+2020-10-23 17:25:56,429 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:25:56,429 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Register = Step 06: Click to 'Logout' link
+2020-10-23 17:25:58,515 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 01: Click to 'Login' link
+2020-10-23 17:25:59,826 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 02: Input to 'Email' textbox
+2020-10-23 17:26:00,527 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 03: Input to 'Password' textbox
+2020-10-23 17:26:01,179 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 04: Click to 'Login' button
+2020-10-23 17:26:02,224 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'My Account' link displayed
+2020-10-23 17:26:02,285 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:02,286 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - Login - Step 05: Verify 'Logout' link displayed
+2020-10-23 17:26:02,340 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:02,356 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 01: Click to 'My Account' link
+2020-10-23 17:26:03,008 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 02: Verify 'Gender Male' is selected
+2020-10-23 17:26:03,067 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:03,068 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 03: Verify 'First name' textox
+2020-10-23 17:26:03,116 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:03,116 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 04: Verify 'Last name' textbox
+2020-10-23 17:26:03,167 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:03,167 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 04: Verify 'Day' dropdown
+2020-10-23 17:26:03,215 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
+2020-10-23 17:26:03,215 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 06: Verify 'Month' dropdown
+2020-10-23 17:26:03,273 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
+2020-10-23 17:26:03,273 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 07: Verify 'Year' dropdown
+2020-10-23 17:26:03,326 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
+2020-10-23 17:26:03,326 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 08: Verify 'Email' textbox
+2020-10-23 17:26:03,374 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:03,374 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 09: Verify 'Company name' textbox
+2020-10-23 17:26:03,422 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- PASSED -------------------------- 
+2020-10-23 17:26:03,422 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 10: Verify 'Newsletter' radio button selected
+2020-10-23 17:26:03,497 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
+2020-10-23 22:02:32,006 INFO  com.nopcommerce.users.Level_09_Share_State - 

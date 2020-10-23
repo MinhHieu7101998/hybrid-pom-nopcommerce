@@ -3,7 +3,6 @@ package com.nopcommerce.users;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -26,9 +25,7 @@ import pageObjects.OrdersPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 import pageObjects.RewardPointsPageObject;
-import reportConfig.AllureTestListener;
 
-@Listeners({AllureTestListener.class})
 @Epic("Regression Test")
 @Feature("Register and Login Tests")
 public class Level_08_Log_ReportNG_Extent_Report extends AbstractTest{
@@ -101,10 +98,10 @@ public class Level_08_Log_ReportNG_Extent_Report extends AbstractTest{
 		homePage = LoginPage.clickToLoginButton();
 		
 		log.info("Login - Step 05: Verify 'My Account' link displayed");
-		verifyFalse(homePage.isMyAccountLinkDisplayed());
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 		
 		log.info("Login - Step 05: Verify 'Logout' link displayed");
-		verifyFalse(homePage.isLogoutLinkDisplayed());
+		verifyTrue(homePage.isLogoutLinkDisplayed());
 		
 	}
 	
@@ -130,10 +127,10 @@ public class Level_08_Log_ReportNG_Extent_Report extends AbstractTest{
 		verifyEquals(CustomerInfoPage.getSelectedTextInDayDropdown(),"10");
 		
 		log.info("View my account - Step 06: Verify 'Month' dropdown");
-		verifyEquals(CustomerInfoPage.getSelectedTextInMonthDropdown(),"8");
+		verifyEquals(CustomerInfoPage.getSelectedTextInMonthDropdown(),"11");
 		
 		log.info("View my account - Step 07: Verify 'Year' dropdown");
-		verifyEquals(CustomerInfoPage.getSelectedTextInYearDropdown(),"2000");
+		verifyEquals(CustomerInfoPage.getSelectedTextInYearDropdown(),"1982");
 		
 		log.info("View my account - Step 08: Verify 'Email' textbox");
 		verifyEquals(CustomerInfoPage.getEmailTextboxValue(),email);
