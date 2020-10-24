@@ -13,4 +13,9 @@ public class AbstractPageUI {
 	public static final String DYNAMIC_LINK = "//a[text()='%s']";
 	public static final String UPLOAD_FILE_TYPE = "//input[@type='file']";
 	public static final String AJAX_LOADING_ICON = "//span[@id='ajaxBusy']";
+	
+	public static final String DYANMIC_TEXTBOX_BY_ID = "//input[@id='%s']";
+	public static final String DYNAMIC_DROPDOWN_BY_NAME = "//select[@name='%s']";
+	public static final String DYNAMIC_BUTTON_BY_VALUE = "//input[@value='%s']";
+	public static final String DYNAMIC_CHECKBOX_OR_RADIO_BUTTON_BY_ID = "//input[@id='%s']";
 }

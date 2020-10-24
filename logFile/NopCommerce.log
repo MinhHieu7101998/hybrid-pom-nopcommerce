@@ -507,3 +507,44 @@
 2020-10-23 17:26:03,422 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report - View my account - Step 10: Verify 'Newsletter' radio button selected
 2020-10-23 17:26:03,497 INFO  com.nopcommerce.users.Level_08_Log_ReportNG_Extent_Report -  -------------------------- FAILED -------------------------- 
 2020-10-23 22:02:32,006 INFO  com.nopcommerce.users.Level_09_Share_State - 
+2020-10-24 15:47:49,176 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:47:54,116 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:47:54,164 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:47:54,884 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:47:54,940 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- FAILED -------------------------- 
+2020-10-24 15:47:55,004 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- FAILED -------------------------- 
+2020-10-24 15:47:55,056 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- FAILED -------------------------- 
+2020-10-24 15:47:55,107 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- FAILED -------------------------- 
+2020-10-24 15:47:55,241 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:47:55,394 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- FAILED -------------------------- 
+2020-10-24 15:47:56,133 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:47:56,179 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:52:47,744 INFO  com.nopcommerce.users.Level_10_Page_Element_Component - 
+2020-10-24 15:53:11,889 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:53:16,961 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:53:17,007 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 15:53:17,669 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:18,998 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:23,868 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:23,917 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:24,583 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:24,626 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:24,673 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:24,715 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:24,759 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:24,920 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:25,090 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- FAILED -------------------------- 
+2020-10-24 16:00:25,921 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:00:25,975 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:07,115 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:11,919 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:11,969 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:13,523 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:13,576 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:13,625 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:13,671 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:13,715 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:13,868 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:14,016 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:14,740 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 
+2020-10-24 16:03:14,786 INFO  com.nopcommerce.users.Level_10_Page_Element_Component -  -------------------------- PASSED -------------------------- 

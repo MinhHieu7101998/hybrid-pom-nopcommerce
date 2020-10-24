@@ -23,4 +23,5 @@ public class RegisterPageUI {
 	public static final String PASSWORD_ERROR_LESS_SIX_CHARATERS_ABOVE_MESSAGE ="//span[@id='Password-error']//p";
 	public static final String PASSWORD_ERROR_LESS_SIX_CHARATERS_BELOW_MESSAGE ="//span[@id='Password-error']//li";
 	public static final String PASSWORD_DIFFERENCE_CONFIRM_PASSWORD_MESSAGE = "//span[@id='ConfirmPassword-error']";
+	
 }

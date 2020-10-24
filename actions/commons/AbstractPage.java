@@ -220,7 +220,25 @@ public class AbstractPage {
 		}
 	}
 
+	protected void selectItemInDropdown(WebDriver driver, String locator, String itemValue, String... dynamicValues) {
+		try {
+			locator = castRestParamter(locator, dynamicValues);
+			element = getElement(driver, locator);
+			select = new Select(element);
+			select.selectByVisibleText(itemValue);
+		} catch (Exception e) {
+			log.debug("Item dropdown is not select: " + e.getMessage());
+		}
+	}
+
 	protected String getFirstSelectedTextDropdown(WebDriver driver, String locator) {
+		element = getElement(driver, locator);
+		select = new Select(element);
+		return select.getFirstSelectedOption().getText();
+	}
+
+	protected String getFirstSelectedTextDropdown(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
 		element = getElement(driver, locator);
 		select = new Select(element);
 		return select.getFirstSelectedOption().getText();
@@ -279,6 +297,11 @@ public class AbstractPage {
 		element = getElement(driver, locator);
 		return element.getAttribute(attributeName);
 	}
+	protected String getElementAttribute(WebDriver driver, String locator, String attributeName, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		element = getElement(driver, locator);
+		return element.getAttribute(attributeName);
+	}
 
 	protected String getElementText(WebDriver driver, String locator) {
 		return getElement(driver, locator).getText();
@@ -318,9 +341,9 @@ public class AbstractPage {
 			log.debug("Element is not displayed with error: " + e.getMessage());
 			return false;
 		}
-		
+
 	}
-	
+
 	protected boolean isElementDisplayed(WebDriver driver, String locator, String... dynamicValues) {
 		try {
 			locator = castRestParamter(locator, dynamicValues);
@@ -340,6 +363,16 @@ public class AbstractPage {
 		}
 	}
 
+	protected boolean isElementSelected(WebDriver driver, String locator, String... dynamicValues) {
+		locator = castRestParamter(locator, dynamicValues);
+		try {
+			return getElement(driver, locator).isSelected();
+		} catch (Exception e) {
+			log.debug("Element is not selected with error: " + e.getMessage());
+			return false;
+		}
+	}
+
 	protected boolean isElementEnabled(WebDriver driver, String locator) {
 		try {
 			return getElement(driver, locator).isEnabled();
@@ -347,7 +380,7 @@ public class AbstractPage {
 			log.debug("Element is not enabled with error: " + e.getMessage());
 			return false;
 		}
-		
+
 	}
 
 	protected void switchToFrame(WebDriver driver, String locator) {
@@ -364,7 +397,7 @@ public class AbstractPage {
 		} catch (Exception e) {
 			log.debug("Can't switch to default content with error: " + e.getMessage());
 		}
-		
+
 	}
 
 	protected void doubleClickToElement(WebDriver driver, String locator) {
@@ -632,6 +665,36 @@ public class AbstractPage {
 		waitToElementClickable(driver, AbstractPageUI.REWARD_POINTS_LINK);
 		clickToElement(driver, AbstractPageUI.REWARD_POINTS_LINK);
 		return PageGeneratorManager.getRewardPointsPage(driver);
+	}
+
+	public void inputToTextboxByID(WebDriver driver, String valueID, String valueInput) {
+		waitToElementVisible(driver, AbstractPageUI.DYANMIC_TEXTBOX_BY_ID, valueID);
+		sendkeyToELement(driver, AbstractPageUI.DYANMIC_TEXTBOX_BY_ID, valueInput, valueID);
+	}
+
+	public void selectItemDropdownByName(WebDriver driver, String valueName, String itemValue) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, valueName);
+		selectItemInDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, itemValue, valueName);
+	}
+
+	public void clickToButtonByValue(WebDriver driver, String value) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, value);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_BUTTON_BY_VALUE, value);
+	}
+
+	public String getValueTextboxByID(WebDriver driver, String valueID) {
+		waitToElementVisible(driver, AbstractPageUI.DYANMIC_TEXTBOX_BY_ID, valueID);
+		return getElementAttribute(driver, AbstractPageUI.DYANMIC_TEXTBOX_BY_ID, "value", valueID);
+	}
+
+	public String getValueDropdownByName(WebDriver driver, String valueName) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, valueName);
+		return getFirstSelectedTextDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, valueName);
+	}
+
+	public boolean isCheckboxOrRadioButtonSelectedByID(WebDriver driver, String valueID) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_CHECKBOX_OR_RADIO_BUTTON_BY_ID, valueID);
+		return isElementSelected(driver, AbstractPageUI.DYNAMIC_CHECKBOX_OR_RADIO_BUTTON_BY_ID, valueID);
 	}
 
 	protected String castRestParamter(String locator, String... dynamicValues) {
